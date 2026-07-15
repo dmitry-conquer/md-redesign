@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" href="/images/favicon.png" type="image/x-icon" />
+    <title>Home page</title>
+  </head>
+
+  <body>
+    <div class="font-base flex min-h-screen w-full flex-col overflow-clip">
+      <a class="sr-only" href="#main-content">Skip to content</a>
+
+      <!-- {{> header}} -->
+
+      <main id="main-content" class="grow">
+        <h1>🚀 Welcome to Your Project!</h1>
+        <p>You're now on the main project page at /pages/index.html</p>
+        <p>Feel free to delete this text and start building something amazing!</p>
+      </main>
+
+      <!-- {{> footer}} -->
+    </div>
+
+    <!-- {{> dialog}} -->
+    <!-- {{> back-top-button}} -->
+
+    <script defer src="https://cdn.jsdelivr.net/npm/@alpinejs/collapse@3.15.11/dist/cdn.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/@alpinejs/focus@3.15.11/dist/cdn.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.15.11/dist/cdn.min.js"></script>
+    <script type="module" src="/src/scripts/main.ts"></script>
+  </body>
+</html>

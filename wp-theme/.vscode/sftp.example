@@ -1,0 +1,16 @@
+{
+  "name": "theme-name",
+  "host": "host.sftp.wpengine.com",
+  "protocol": "sftp",
+  "port": 2222,
+  "username": "username",
+  "password": "password",
+  "remotePath": "/wp-content/themes/theme-name/",
+  "uploadOnSave": true,
+  "ignore": [
+    "sftp.json",
+    "acf-json",
+    ".vscode",
+    "*.txt"
+  ]
+}
