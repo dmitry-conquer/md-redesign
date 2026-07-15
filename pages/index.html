@@ -368,6 +368,58 @@
           <a class="mc-back-top" href="#main-content">Back to top <i class="ph ph-arrow-up" aria-hidden="true"></i></a>
         </div>
       </footer>
+
+      <button
+        class="mc-sales-trigger"
+        type="button"
+        data-sales-trigger
+        aria-controls="mc-lead-modal"
+        aria-haspopup="dialog"
+        aria-hidden="true"
+        disabled
+      >
+        <span class="mc-sales-trigger__message">
+          <small>Have a project in mind?</small>
+          <strong>Talk to our team <i class="ph ph-arrow-up-right" aria-hidden="true"></i></strong>
+        </span>
+        <span class="mc-sales-trigger__target" aria-hidden="true"><i></i></span>
+        <span class="sr-only">Open request a quote form</span>
+      </button>
+
+      <div class="mc-lead-modal" id="mc-lead-modal" data-lead-modal aria-hidden="true">
+        <div class="mc-lead-modal__backdrop" data-lead-close></div>
+        <section class="mc-lead-modal__panel" role="dialog" aria-modal="true" aria-labelledby="mc-lead-title">
+          <header class="mc-lead-modal__header">
+            <div>
+              <span>Start a conversation</span>
+              <h2 id="mc-lead-title">Tell us about your project.</h2>
+            </div>
+            <button class="mc-lead-modal__close" type="button" data-lead-close aria-label="Close request a quote form">
+              <span></span><span></span>
+            </button>
+          </header>
+          <div class="mc-lead-modal__frame" data-lead-frame>
+            <div class="mc-lead-modal__loading" aria-hidden="true"><span></span><small>Loading secure form</small></div>
+            <iframe
+              id="inline-b1b8Fk23JaYzltdkSjNl"
+              title="Request a Quote Form"
+              data-src="https://api.leadconnectorhq.com/widget/form/b1b8Fk23JaYzltdkSjNl"
+              data-layout="{'id':'INLINE'}"
+              data-trigger-type="alwaysShow"
+              data-trigger-value=""
+              data-activation-type="alwaysActivated"
+              data-activation-value=""
+              data-deactivation-type="neverDeactivate"
+              data-deactivation-value=""
+              data-form-name="Request a Quote Form"
+              data-height="790"
+              data-layout-iframe-id="inline-b1b8Fk23JaYzltdkSjNl"
+              data-form-id="b1b8Fk23JaYzltdkSjNl"
+              loading="lazy"
+            ></iframe>
+          </div>
+        </section>
+      </div>
     </div>
 
     <script type="module" src="/src/scripts/main.ts"></script>

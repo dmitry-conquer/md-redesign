@@ -167,42 +167,45 @@ type LogoPose = {
 type LogoKeyframe = LogoPose & {
   selector: string;
   anchor: number;
+  dock?: boolean;
 };
 
 const desktopLogoKeyframes: LogoKeyframe[] = [
   { selector: "[data-logo-origin]", anchor: 0, x: 0.06, y: 0.06, scale: 0.03, rx: 0, ry: 0, rz: 0, opacity: 1 },
-  { selector: ".mc-hero", anchor: 0.16, x: 0.06, y: 0.06, scale: 0.034, rx: -0.025, ry: -0.08, rz: -0.008, opacity: 1 },
-  { selector: ".mc-hero", anchor: 0.28, x: 0.3, y: 0.055, scale: 0.043, rx: -0.05, ry: -0.13, rz: -0.015, opacity: 1 },
-  { selector: ".mc-hero", anchor: 0.58, x: 0.55, y: 0.06, scale: 0.058, rx: -0.08, ry: -0.22, rz: -0.03, opacity: 1 },
-  { selector: ".mc-hero", anchor: 0.95, x: 0.87, y: 0.72, scale: 0.095, rx: -0.18, ry: -0.35, rz: -0.08, opacity: 1 },
+  { selector: ".mc-hero", anchor: 0.06, x: 0.32, y: 0.055, scale: 0.038, rx: -0.03, ry: -0.09, rz: -0.009, opacity: 1 },
+  { selector: ".mc-hero", anchor: 0.16, x: 0.42, y: 0.055, scale: 0.045, rx: -0.05, ry: -0.13, rz: -0.015, opacity: 1 },
+  { selector: ".mc-hero", anchor: 0.44, x: 0.58, y: 0.06, scale: 0.058, rx: -0.08, ry: -0.22, rz: -0.03, opacity: 1 },
+  { selector: ".mc-hero", anchor: 0.82, x: 0.87, y: 0.72, scale: 0.095, rx: -0.18, ry: -0.35, rz: -0.08, opacity: 1 },
   { selector: ".mc-proof", anchor: 0.42, x: 0.91, y: 0.42, scale: 0.07, rx: 0.08, ry: 0.65, rz: 0.12, opacity: 0.88 },
   { selector: ".mc-intro", anchor: 0.2, x: 0.72, y: 0.3, scale: 0.21, rx: -0.16, ry: 1.5, rz: -0.18, opacity: 0.94 },
   { selector: ".mc-manifesto", anchor: 0.28, x: 0.76, y: 0.53, scale: 0.42, rx: 0.28, ry: 3.2, rz: -0.34, opacity: 0.86 },
   { selector: ".mc-benefits", anchor: 0.18, x: 0.88, y: 0.23, scale: 0.1, rx: -0.12, ry: 4.42, rz: 0.1, opacity: 0.9 },
   { selector: ".mc-conversion", anchor: 0.23, x: 0.78, y: 0.63, scale: 0.29, rx: 0.18, ry: 5.82, rz: -0.2, opacity: 0.92 },
-  { selector: ".mc-process", anchor: 0.2, x: 0.5, y: 0.31, scale: 0.14, rx: -0.25, ry: 7.05, rz: 0.28, opacity: 0.9 },
-  { selector: ".mc-work", anchor: 0.2, x: 0.87, y: 0.82, scale: 0.09, rx: 0.15, ry: 8.62, rz: -0.1, opacity: 0.9 },
-  { selector: ".mc-faq", anchor: 0.25, x: 0.88, y: 0.66, scale: 0.095, rx: -0.18, ry: 10.18, rz: 0.2, opacity: 0.9 },
-  { selector: ".mc-final", anchor: 0.24, x: 0.79, y: 0.44, scale: 0.36, rx: 0.08, ry: 12.0, rz: -0.1, opacity: 0.78 },
-  { selector: ".mc-footer", anchor: 0.55, x: 0.9, y: 0.7, scale: 0.075, rx: -0.12, ry: 13.0, rz: 0.08, opacity: 0.86 },
+  { selector: ".mc-process", anchor: 0.02, x: 0.84, y: 0.72, scale: 0.16, rx: -0.14, ry: 6.45, rz: 0.18, opacity: 1 },
+  { selector: ".mc-process", anchor: 0.12, dock: true, x: 0.952, y: 0.9, scale: 0.035, rx: -0.08, ry: 6.72, rz: 0.04, opacity: 1 },
+  { selector: ".mc-work", anchor: 0.2, dock: true, x: 0.952, y: 0.9, scale: 0.035, rx: -0.08, ry: 10.05, rz: 0.04, opacity: 1 },
+  { selector: ".mc-faq", anchor: 0.25, dock: true, x: 0.952, y: 0.9, scale: 0.035, rx: -0.08, ry: 13.35, rz: 0.04, opacity: 1 },
+  { selector: ".mc-final", anchor: 0.24, dock: true, x: 0.952, y: 0.9, scale: 0.035, rx: -0.08, ry: 16.55, rz: 0.04, opacity: 1 },
+  { selector: ".mc-footer", anchor: 0.55, dock: true, x: 0.952, y: 0.9, scale: 0.035, rx: -0.08, ry: 19.0, rz: 0.04, opacity: 1 },
 ];
 
 const mobileLogoKeyframes: LogoKeyframe[] = [
   { selector: "[data-logo-origin]", anchor: 0, x: 0.09, y: 0.045, scale: 0.095, rx: 0, ry: 0, rz: 0, opacity: 1 },
-  { selector: ".mc-hero", anchor: 0.16, x: 0.09, y: 0.045, scale: 0.1, rx: -0.025, ry: -0.08, rz: -0.008, opacity: 1 },
-  { selector: ".mc-hero", anchor: 0.28, x: 0.58, y: 0.035, scale: 0.103, rx: -0.04, ry: -0.12, rz: -0.015, opacity: 1 },
-  { selector: ".mc-hero", anchor: 0.58, x: 0.75, y: 0.045, scale: 0.115, rx: -0.06, ry: -0.2, rz: -0.03, opacity: 1 },
-  { selector: ".mc-hero", anchor: 0.95, x: 0.8, y: 0.2, scale: 0.2, rx: -0.15, ry: -0.3, rz: -0.08, opacity: 1 },
+  { selector: ".mc-hero", anchor: 0.06, x: 0.55, y: 0.035, scale: 0.1, rx: -0.03, ry: -0.09, rz: -0.009, opacity: 1 },
+  { selector: ".mc-hero", anchor: 0.16, x: 0.66, y: 0.035, scale: 0.105, rx: -0.04, ry: -0.12, rz: -0.015, opacity: 1 },
+  { selector: ".mc-hero", anchor: 0.44, x: 0.76, y: 0.045, scale: 0.115, rx: -0.06, ry: -0.2, rz: -0.03, opacity: 1 },
+  { selector: ".mc-hero", anchor: 0.82, x: 0.8, y: 0.2, scale: 0.2, rx: -0.15, ry: -0.3, rz: -0.08, opacity: 1 },
   { selector: ".mc-proof", anchor: 0.35, x: 0.78, y: 0.28, scale: 0.16, rx: 0.08, ry: 0.7, rz: 0.12, opacity: 0.86 },
   { selector: ".mc-intro", anchor: 0.2, x: 0.77, y: 0.24, scale: 0.29, rx: -0.15, ry: 1.55, rz: -0.18, opacity: 0.9 },
   { selector: ".mc-manifesto", anchor: 0.3, x: 0.72, y: 0.63, scale: 0.48, rx: 0.25, ry: 3.15, rz: -0.28, opacity: 0.72 },
   { selector: ".mc-benefits", anchor: 0.16, x: 0.78, y: 0.18, scale: 0.2, rx: -0.1, ry: 4.4, rz: 0.1, opacity: 0.86 },
   { selector: ".mc-conversion", anchor: 0.24, x: 0.72, y: 0.72, scale: 0.36, rx: 0.16, ry: 5.8, rz: -0.18, opacity: 0.76 },
-  { selector: ".mc-process", anchor: 0.18, x: 0.76, y: 0.2, scale: 0.22, rx: -0.22, ry: 7.05, rz: 0.24, opacity: 0.84 },
-  { selector: ".mc-work", anchor: 0.18, x: 0.76, y: 0.8, scale: 0.18, rx: 0.14, ry: 8.6, rz: -0.1, opacity: 0.84 },
-  { selector: ".mc-faq", anchor: 0.2, x: 0.8, y: 0.72, scale: 0.2, rx: -0.16, ry: 10.15, rz: 0.18, opacity: 0.84 },
-  { selector: ".mc-final", anchor: 0.2, x: 0.7, y: 0.4, scale: 0.48, rx: 0.06, ry: 12.0, rz: -0.08, opacity: 0.62 },
-  { selector: ".mc-footer", anchor: 0.5, x: 0.78, y: 0.72, scale: 0.18, rx: -0.1, ry: 13.0, rz: 0.08, opacity: 0.82 },
+  { selector: ".mc-process", anchor: 0.02, x: 0.78, y: 0.72, scale: 0.28, rx: -0.12, ry: 6.42, rz: 0.16, opacity: 1 },
+  { selector: ".mc-process", anchor: 0.1, dock: true, x: 0.86, y: 0.92, scale: 0.11, rx: -0.07, ry: 6.7, rz: 0.03, opacity: 1 },
+  { selector: ".mc-work", anchor: 0.18, dock: true, x: 0.86, y: 0.92, scale: 0.11, rx: -0.07, ry: 10.0, rz: 0.03, opacity: 1 },
+  { selector: ".mc-faq", anchor: 0.2, dock: true, x: 0.86, y: 0.92, scale: 0.11, rx: -0.07, ry: 13.25, rz: 0.03, opacity: 1 },
+  { selector: ".mc-final", anchor: 0.2, dock: true, x: 0.86, y: 0.92, scale: 0.11, rx: -0.07, ry: 16.45, rz: 0.03, opacity: 1 },
+  { selector: ".mc-footer", anchor: 0.5, dock: true, x: 0.86, y: 0.92, scale: 0.11, rx: -0.07, ry: 18.9, rz: 0.03, opacity: 1 },
 ];
 
 async function initScrollLogo(root: HTMLElement) {
@@ -235,6 +238,8 @@ async function initScrollLogo(root: HTMLElement) {
 
   const motionRig = new THREE.Group();
   const floatRig = new THREE.Group();
+  const logoMeshes: THREE.Mesh[] = [];
+  let dockCenterNdc: THREE.Vector2 | null = null;
   motionRig.add(floatRig);
   scene.add(motionRig);
 
@@ -263,6 +268,8 @@ async function initScrollLogo(root: HTMLElement) {
     model.traverse((child) => {
       if (!(child instanceof THREE.Mesh)) return;
       child.frustumCulled = false;
+      child.geometry.computeBoundingBox();
+      logoMeshes.push(child);
       const materials = Array.isArray(child.material) ? child.material : [child.material];
       materials.forEach((material) => {
         if (material instanceof THREE.MeshStandardMaterial) {
@@ -291,7 +298,7 @@ async function initScrollLogo(root: HTMLElement) {
     return;
   }
 
-  const { selector: _initialSelector, anchor: _initialAnchor, ...initialPose } = desktopLogoKeyframes[0];
+  const { selector: _initialSelector, anchor: _initialAnchor, dock: _initialDock, ...initialPose } = desktopLogoKeyframes[0];
   const current: LogoPose = { ...initialPose };
   let anchors: Array<{ scroll: number; pose: LogoPose }> = [];
   let lastScroll = window.scrollY;
@@ -301,8 +308,8 @@ async function initScrollLogo(root: HTMLElement) {
   let pageVisible = !document.hidden;
 
   const resize = () => {
-    const width = window.innerWidth;
-    const height = window.innerHeight;
+    const width = stage.clientWidth || document.documentElement.clientWidth || window.innerWidth;
+    const height = stage.clientHeight || document.documentElement.clientHeight || window.innerHeight;
     const dprCap = width < 768 ? 1.25 : 1.6;
     renderer.setPixelRatio(Math.min(window.devicePixelRatio, dprCap));
     renderer.setSize(width, height, false);
@@ -311,8 +318,20 @@ async function initScrollLogo(root: HTMLElement) {
   };
 
   const measureAnchors = () => {
-    const source = window.innerWidth < 768 ? mobileLogoKeyframes : desktopLogoKeyframes;
-    anchors = source.flatMap(({ selector, anchor, ...pose }) => {
+    const viewportWidth = stage.clientWidth || document.documentElement.clientWidth || window.innerWidth;
+    const viewportHeight = stage.clientHeight || document.documentElement.clientHeight || window.innerHeight;
+    const source = viewportWidth < 768 ? mobileLogoKeyframes : desktopLogoKeyframes;
+    const dockTarget = root.querySelector<HTMLElement>(".mc-sales-trigger__target");
+    const dockRect = dockTarget?.getBoundingClientRect();
+    const stageRect = stage.getBoundingClientRect();
+    if (dockRect) {
+      const centerX = dockRect.left + dockRect.width * 0.5 - stageRect.left;
+      const centerY = dockRect.top + dockRect.height * 0.5 - stageRect.top;
+      dockCenterNdc = new THREE.Vector2((centerX / viewportWidth) * 2 - 1, 1 - (centerY / viewportHeight) * 2);
+    } else {
+      dockCenterNdc = null;
+    }
+    anchors = source.flatMap(({ selector, anchor, dock, ...pose }) => {
       const element = root.querySelector<HTMLElement>(selector);
       if (!element) return [];
       const rect = element.getBoundingClientRect();
@@ -322,13 +341,21 @@ async function initScrollLogo(root: HTMLElement) {
           scroll: 0,
           pose: {
             ...pose,
-            x: (rect.left + markWidth * 0.5) / window.innerWidth,
-            y: (rect.top + rect.height * 0.5) / window.innerHeight,
-            scale: markWidth / window.innerWidth,
+            x: (rect.left + markWidth * 0.5) / viewportWidth,
+            y: (rect.top + rect.height * 0.5) / viewportHeight,
+            scale: markWidth / viewportWidth,
           },
         }];
       }
-      return [{ scroll: rect.top + window.scrollY + rect.height * anchor, pose }];
+      const measuredPose = dock && dockRect
+        ? {
+            ...pose,
+            x: (dockRect.left + dockRect.width * 0.5 - stageRect.left) / viewportWidth,
+            y: (dockRect.top + dockRect.height * 0.5 - stageRect.top) / viewportHeight,
+            scale: (Math.max(dockRect.width - (viewportWidth < 768 ? 16 : 18), 1) * 0.58) / viewportWidth,
+          }
+        : pose;
+      return [{ scroll: rect.top + window.scrollY + rect.height * anchor, pose: measuredPose }];
     });
     anchors.sort((a, b) => a.scroll - b.scroll);
   };
@@ -386,6 +413,36 @@ async function initScrollLogo(root: HTMLElement) {
     if (!reducedMotion.matches) {
       floatRig.position.y = Math.sin(time * 0.00072) * 0.018;
       floatRig.rotation.y = Math.sin(time * 0.00034) * 0.025;
+    }
+
+    if (root.classList.contains("is-sales-docked") && dockCenterNdc && logoMeshes.length) {
+      scene.updateMatrixWorld(true);
+      let minX = Infinity;
+      let maxX = -Infinity;
+      let minY = Infinity;
+      let maxY = -Infinity;
+      const corner = new THREE.Vector3();
+
+      const mesh = logoMeshes[0];
+      const positions = mesh.geometry.getAttribute("position");
+      const sampleStep = Math.max(1, Math.floor(positions.count / 1400));
+      for (let index = 0; index < positions.count; index += sampleStep) {
+        corner
+          .fromBufferAttribute(positions, index)
+          .applyMatrix4(mesh.matrixWorld)
+          .project(camera);
+        minX = Math.min(minX, corner.x);
+        maxX = Math.max(maxX, corner.x);
+        minY = Math.min(minY, corner.y);
+        maxY = Math.max(maxY, corner.y);
+      }
+
+      if (Number.isFinite(minX) && Number.isFinite(minY)) {
+        const projectedCenterX = (minX + maxX) * 0.5;
+        const projectedCenterY = (minY + maxY) * 0.5;
+        motionRig.position.x += (dockCenterNdc.x - projectedCenterX) * visibleWidth * 0.5;
+        motionRig.position.y += (dockCenterNdc.y - projectedCenterY) * visibleHeight * 0.5;
+      }
     }
 
     canvas.style.opacity = scroll <= 1 ? "0" : "1";
@@ -741,6 +798,139 @@ function initFinal(root: HTMLElement) {
   gsap.from(button, { y: 50, opacity: 0, duration: 0.9, ease: "mc-out", scrollTrigger: { trigger: button, start: "top 92%", once: true } });
 }
 
+function initSalesDock(root: HTMLElement, lenis: Lenis | null) {
+  const process = root.querySelector<HTMLElement>(".mc-process");
+  const trigger = root.querySelector<HTMLButtonElement>("[data-sales-trigger]");
+  const modal = root.querySelector<HTMLElement>("[data-lead-modal]");
+  const panel = modal?.querySelector<HTMLElement>(".mc-lead-modal__panel");
+  const backdrop = modal?.querySelector<HTMLElement>(".mc-lead-modal__backdrop");
+  const closeButton = modal?.querySelector<HTMLButtonElement>(".mc-lead-modal__close");
+  const frameShell = modal?.querySelector<HTMLElement>("[data-lead-frame]");
+  const iframe = modal?.querySelector<HTMLIFrameElement>("iframe[data-src]");
+
+  if (!process || !trigger || !modal || !panel || !backdrop || !closeButton || !frameShell || !iframe) return;
+
+  let isOpen = false;
+  let formLoaded = false;
+  let previousFocus: HTMLElement | null = null;
+  let dockRevealTimer = 0;
+  const inertTargets = root.querySelectorAll<HTMLElement>("[data-header], .mc-menu, main, .mc-footer, [data-sales-trigger]");
+
+  const setDocked = (docked: boolean) => {
+    window.clearTimeout(dockRevealTimer);
+    dockRevealTimer = 0;
+
+    if (!docked) {
+      root.classList.remove("is-sales-docked");
+      trigger.disabled = true;
+      trigger.setAttribute("aria-hidden", "true");
+      return;
+    }
+
+    if (root.classList.contains("is-sales-docked")) return;
+    const revealDelay = reducedMotion.matches ? 0 : window.innerWidth < 768 ? 650 : 850;
+    dockRevealTimer = window.setTimeout(() => {
+      root.classList.add("is-sales-docked");
+      trigger.disabled = false;
+      trigger.setAttribute("aria-hidden", "false");
+      dockRevealTimer = 0;
+    }, revealDelay);
+  };
+
+  ScrollTrigger.create({
+    trigger: process,
+    start: () => (window.innerWidth < 768 ? "18% top" : "22% top"),
+    end: () => ScrollTrigger.maxScroll(window) + 1,
+    invalidateOnRefresh: true,
+    onToggle: (self) => setDocked(self.isActive),
+    onRefresh: (self) => setDocked(self.isActive),
+  });
+
+  const loadForm = () => {
+    if (formLoaded) return;
+    formLoaded = true;
+    iframe.src = iframe.dataset.src ?? "";
+    iframe.addEventListener("load", () => frameShell.classList.add("is-loaded"), { once: true });
+
+    if (!document.querySelector<HTMLScriptElement>('script[data-mc-leadconnector]')) {
+      const script = document.createElement("script");
+      script.src = "https://link.msgsndr.com/js/form_embed.js";
+      script.async = true;
+      script.dataset.mcLeadconnector = "true";
+      document.body.append(script);
+    }
+  };
+
+  const setBackgroundInert = (inert: boolean) => {
+    inertTargets.forEach((element) => {
+      element.inert = inert;
+    });
+  };
+
+  const openModal = () => {
+    if (isOpen) return;
+    isOpen = true;
+    previousFocus = document.activeElement instanceof HTMLElement ? document.activeElement : trigger;
+    loadForm();
+    root.classList.add("is-lead-open");
+    modal.setAttribute("aria-hidden", "false");
+    setBackgroundInert(true);
+    lenis?.stop();
+
+    gsap.killTweensOf([modal, backdrop, panel]);
+    gsap.set(modal, { visibility: "visible" });
+    gsap.timeline({ defaults: { overwrite: true } })
+      .fromTo(backdrop, { opacity: 0 }, { opacity: 1, duration: reducedMotion.matches ? 0 : 0.45, ease: "power2.out" })
+      .fromTo(
+        panel,
+        { y: reducedMotion.matches ? 0 : 44, scale: reducedMotion.matches ? 1 : 0.965, opacity: 0, clipPath: "inset(4% 4% 4% 4% round 1.5rem)" },
+        { y: 0, scale: 1, opacity: 1, clipPath: "inset(0% 0% 0% 0% round 0rem)", duration: reducedMotion.matches ? 0 : 0.72, ease: "mc-out" },
+        0.08,
+      )
+      .call(() => closeButton.focus());
+  };
+
+  const closeModal = () => {
+    if (!isOpen) return;
+    isOpen = false;
+    gsap.killTweensOf([modal, backdrop, panel]);
+    gsap.timeline({
+      defaults: { overwrite: true },
+      onComplete: () => {
+        modal.style.visibility = "hidden";
+        modal.setAttribute("aria-hidden", "true");
+        root.classList.remove("is-lead-open");
+        setBackgroundInert(false);
+        lenis?.start();
+        previousFocus?.focus();
+      },
+    })
+      .to(panel, { y: reducedMotion.matches ? 0 : 26, scale: 0.98, opacity: 0, duration: reducedMotion.matches ? 0 : 0.38, ease: "power2.in" })
+      .to(backdrop, { opacity: 0, duration: reducedMotion.matches ? 0 : 0.3, ease: "power2.in" }, 0.08);
+  };
+
+  trigger.addEventListener("click", openModal);
+  modal.querySelectorAll<HTMLElement>("[data-lead-close]").forEach((element) => element.addEventListener("click", closeModal));
+  document.addEventListener("keydown", (event) => {
+    if (!isOpen) return;
+    if (event.key === "Escape") {
+      closeModal();
+      return;
+    }
+    if (event.key !== "Tab") return;
+    const focusable = [closeButton, iframe];
+    const first = focusable[0];
+    const last = focusable[focusable.length - 1];
+    if (event.shiftKey && document.activeElement === first) {
+      event.preventDefault();
+      last.focus();
+    } else if (!event.shiftKey && document.activeElement === last) {
+      event.preventDefault();
+      first.focus();
+    }
+  });
+}
+
 async function initExperience(root: HTMLElement) {
   const logoReady = initScrollLogo(root);
   await Promise.all([initLoader(root), logoReady]);
@@ -760,6 +950,7 @@ async function initExperience(root: HTMLElement) {
   initTilt(root);
   initAccordion(root);
   initFinal(root);
+  initSalesDock(root, lenis);
 
   await document.fonts.ready;
   ScrollTrigger.refresh();

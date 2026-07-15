@@ -89,6 +89,46 @@ No actionable P0, P1, or P2 issues remain.
   - Fix: extended the origin hold, added a restrained micro-scale/rotation phase, delayed the lateral departure, and distributed the first hero descent across a longer scroll range. Scroll-velocity rotation now ramps in only after the object has begun leaving the origin.
 - Post-fix evidence: desktop states at 0, 80, 200, and 520 px plus 390 × 844 mobile states were recaptured. The object stays registered to the header mark during the initial scroll, then moves progressively into the hero; mobile document width remains within the viewport.
 
+### Iteration 9 — sales docking and lead-generation modal
+
+- Added a composed landing arc that settles the 3D mark into a persistent bottom-right dock during the process section, with stable desktop and mobile poses through the remaining page.
+- Added a delayed contextual sales prompt and a transparent interaction target aligned to the 3D mark. The prompt reflows above the object on mobile and respects the device safe area.
+- Added an accessible GSAP modal containing the supplied LeadConnector Request a Quote form. The external form and embed helper load only on first interaction; background content becomes inert, smooth scrolling pauses, focus moves into the dialog, and returns to the trigger on close.
+- Post-fix evidence: desktop and 390 × 844 docking states, popup states, form loading, close/focus restoration, and menu-open states were recaptured. Menu stacking remains above both the 3D stage and trigger, no horizontal overflow was introduced, and the browser console reports no warnings or errors.
+
+### Iteration 10 — form spacing, faster departure, and dock rotation
+
+- Added a responsive white-space frame around the cross-origin LeadConnector iframe (24 px desktop, 12 px mobile) so fields and consent copy no longer touch the modal edges.
+- Compressed the first hero keyframes and moved the first free-header waypoint earlier. At 80 px scroll the 3D mark has already cleared the header wordmark on desktop and mobile while retaining damped motion.
+- Kept the dock position and scale stable but increased the Y-axis angle across Work, FAQ, Final CTA, and Footer keyframes. The mark now continues rotating in direct response to scroll after landing.
+- Post-fix evidence: clean-load desktop/mobile departure states, the padded live form, and Process/Work/FAQ dock orientations were recaptured without console errors or horizontal overflow.
+
+### Iteration 11 — exact dock-ring alignment
+
+- Shifted the desktop dock pose to the visual centroid of the rotated 3D silhouette and moved the final landing waypoint ahead of the sales-trigger reveal.
+- Delayed the prompt activation until after the object has settled, preventing the large in-flight mark from overlapping the dock UI.
+- Increased the red outer and inner ring contrast so the target remains legible on both light and dark content surfaces.
+- Post-fix evidence: settled desktop and 390 × 844 mobile dock states were recaptured. The mark is centered inside both rings, remains scroll-rotatable, and introduces no horizontal overflow.
+
+### Iteration 12 — landing/reveal synchronization
+
+- P2: During fast scrolling, the sales UI could reveal while the damped 3D rig was still converging on its dock pose, exposing a temporarily oversized and vertically offset mark inside the ring.
+  - Fix: decoupled the ScrollTrigger threshold from the visible prompt state. The dock UI now waits 850 ms on desktop and 650 ms on mobile after crossing the landing threshold, while reverse scrolling hides it immediately.
+- Post-fix evidence: a forced fast-jump capture shows the ring hidden during convergence and visible only after the mark is centered over the target point. Scroll-linked dock rotation remains active.
+
+### Iteration 13 — compact mark inside the dock rings
+
+- Reduced the final desktop dock scale from `0.07` to `0.035` and the mobile dock scale from `0.15` to `0.11`, keeping every downstream rotation keyframe consistent.
+- Recalibrated the responsive Y positions after scaling so the visible mark center—not only its motion rig pivot—aligns with the target dot.
+- Post-fix evidence: desktop and 390 × 844 mobile captures show the full mark contained inside the inner ring with balanced clearance and no horizontal overflow.
+
+### Iteration 14 — viewport-independent projected centering
+
+- Root cause: the fixed canvas used `window.innerWidth` (including the scrollbar) while its CSS box used `clientWidth`, and a rotated concave 3D silhouette does not share the projected center of its rectangular bounding box.
+- Fix: renderer sizing and DOM-to-WebGL conversion now use the actual stage client box. Dock position and scale are measured from the live ring on every resize/refresh.
+- Added a dock-only projection pass that samples the model's real geometry vertices, calculates the visible 2D silhouette bounds at the current rotation, and offsets the motion rig so that visible center matches the ring point every frame.
+- Post-fix evidence: 1280 × 720, 1024 × 600, and 390 × 844 states were recaptured without overflow or console errors; correction remains active while the mark rotates.
+
 ## Primary interactions tested
 
 - Full-screen menu open/close and Escape-ready state.
