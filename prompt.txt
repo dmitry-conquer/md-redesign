@@ -1,0 +1,370 @@
+You are a senior award-winning creative developer, digital art director, UX designer, interaction designer, and motion designer.
+
+Your task is to design and build a premium, production-ready landing page with the visual ambition, polish, and interaction quality commonly found on Awwwards-winning websites.
+
+The result must not feel like a template, wireframe, or ordinary corporate page. Every section should introduce a meaningful visual transition, spatial relationship, or interactive moment while maintaining clarity, usability, accessibility, and conversion focus.
+
+## Creative direction
+
+Create a sophisticated digital experience characterized by:
+
+- Strong art direction and editorial composition.
+- Large expressive typography.
+- Deliberate use of negative space.
+- Cinematic pacing.
+- Layered depth and spatial transitions.
+- High-quality image treatment.
+- Restrained but memorable visual effects.
+- Consistent motion language across the entire experience.
+- Clear hierarchy and conversion-oriented UX.
+- Premium interaction details at every stage of the journey.
+
+Avoid generic cards, predictable section stacking, excessive gradients, random decorative shapes, and animation without purpose.
+
+The experience should feel composed as one continuous visual story rather than a collection of unrelated sections.
+
+## Required technology
+
+Use the following tools where appropriate:
+
+- TypeScript
+- Semantic HTML
+- Modern CSS
+- GSAP
+- GSAP ScrollTrigger
+- GSAP SplitText
+- GSAP CustomEase
+- Lenis smooth scrolling
+- Three.js
+- GLTFLoader
+- WebGL with a transparent canvas
+- PMREM environment lighting
+- RoomEnvironment
+- RectAreaLight
+- Responsive CSS using fluid sizing, `clamp()`, modern viewport units, and safe-area support
+
+Use native browser APIs for accessibility, focus management, responsive measurements, and performance optimization.
+
+Do not replace GSAP or Three.js with simplified CSS-only imitations when advanced animation or 3D behavior is required.
+
+## Motion system
+
+Build a unified motion system rather than isolated animations.
+
+Motion should feel:
+
+- Smooth
+- Weighted
+- Cinematic
+- Responsive
+- Directional
+- Physically believable
+- Consistent across sections
+
+Define a small collection of custom easing curves and reuse them throughout the experience.
+
+Use Lenis to create controlled smooth scrolling and synchronize it with ScrollTrigger.
+
+All scroll-driven motion must support reverse scrolling without visual jumps or broken states.
+
+### Typography animation
+
+Use SplitText for important headings and statements.
+
+Apply techniques such as:
+
+- Character-based title reveals.
+- Word-based editorial reveals.
+- Line masks for paragraph entrances.
+- Perspective rotation.
+- Staggered vertical movement.
+- Scroll-linked word emphasis.
+- Velocity-responsive skew.
+- Controlled tracking changes.
+- Outline-to-solid typography transitions.
+
+Animations should respect natural reading order and never reduce legibility.
+
+### Scroll choreography
+
+Use ScrollTrigger to create:
+
+- Pinned cinematic sections.
+- Layered parallax.
+- Image scaling.
+- Section clipping and framing.
+- Horizontal galleries.
+- Sticky storytelling layouts.
+- Scroll-linked progress indicators.
+- Direction-aware transitions.
+- Staggered content reveals.
+- Image mask animations.
+- Scroll velocity reactions.
+- Smooth transitions between light and dark surfaces.
+- Continuous marquee systems without empty gaps.
+
+Avoid abrupt visibility changes. Elements leaving the viewport should have intentionally designed exit animations.
+
+### Micro-interactions
+
+Add refined interaction details such as:
+
+- Magnetic buttons.
+- Responsive arrow movement.
+- Cursor states.
+- Image tilt.
+- Hover depth.
+- Border transitions.
+- Masked button fills.
+- Subtle elastic returns.
+- Project-preview cursor modes.
+- Accessible menu transitions.
+- Controlled accordion motion.
+
+Hover effects must enhance hierarchy and affordance rather than become decorative noise.
+
+## Persistent 3D brand object
+
+Integrate a supplied `.glb` model as a central part of the experience.
+
+The 3D object must be rendered through a fixed transparent WebGL canvas and remain visible across the page.
+
+### 3D rendering quality
+
+Use a professional studio-lighting setup:
+
+- PMREM-generated environment lighting.
+- Neutral or brand-compatible tone mapping.
+- Soft rectangular key, rim, and fill lights.
+- Physically coherent materials.
+- Controlled roughness and metalness.
+- Restrained clearcoat.
+- Consistent material treatment across front, back, and edge geometry.
+- No accidental transparency.
+- No cheap plastic appearance.
+- No excessive bloom or overexposed highlights.
+
+Preserve the supplied model instead of rebuilding it unless geometry repair is explicitly required.
+
+Normalize the model, correct its visual proportions only when necessary, and establish a reliable local pivot.
+
+### Scroll-linked 3D trajectory
+
+Create responsive keyframe systems for desktop and mobile.
+
+The object should:
+
+- Begin from a meaningful interface position.
+- Transition smoothly into the page.
+- Move along intentional spatial paths.
+- Rotate across multiple axes.
+- Change scale.
+- React subtly to scroll velocity.
+- Maintain damped, inertial movement.
+- Continue working during reverse scrolling.
+- Avoid covering important content.
+- Use different poses for different visual contexts.
+- Remain performant on mobile.
+
+Interpolate position, scale, rotation, and other pose properties with damped motion rather than snapping directly between states.
+
+Use viewport-aware keyframes and recalculate them after resize and ScrollTrigger refresh.
+
+Do not rely exclusively on hardcoded viewport percentages when the 3D object must align with a DOM element.
+
+### DOM-to-WebGL alignment
+
+When the model must align with a button, ring, logo, or other interface element:
+
+1. Measure the real DOM target using `getBoundingClientRect()`.
+2. Use the actual WebGL stage `clientWidth` and `clientHeight`, not only `window.innerWidth`.
+3. Convert the measured DOM center into normalized WebGL coordinates.
+4. Derive the 3D scale from the target’s real pixel dimensions.
+5. Recalculate the result after resize, breakpoint changes, and ScrollTrigger refresh.
+6. Account for scrollbar width and safe-area offsets.
+7. When the model rotates, project its real geometry vertices through the active camera.
+8. Calculate the visible 2D silhouette bounds.
+9. Compensate the motion rig so the visible center remains aligned with the DOM target during rotation.
+
+Do not manually tune fixed `x/y` values for critical DOM-to-WebGL alignment.
+
+## 3D docking interaction
+
+At an intentional point later in the journey, transition the 3D object into a compact fixed docking state.
+
+The object should:
+
+- Decelerate naturally into the dock.
+- Scale down to fit completely inside a bordered interaction ring.
+- Align its visible center with the ring’s center point.
+- Preserve balanced clearance around the object.
+- Continue rotating in response to further scrolling.
+- Remain clickable through a transparent DOM interaction layer.
+- Avoid blocking navigation or critical content.
+
+Do not reveal the dock UI while the damped model is still approaching its final position.
+
+Delay the ring and message reveal until the model has visually settled. Reverse scrolling should hide the dock immediately and return the object to its main trajectory.
+
+## Conversion trigger and modal
+
+Use the docked 3D object as a contextual conversion trigger.
+
+Show a compact message near the object only after docking is complete.
+
+On activation, open a premium lead-generation modal with:
+
+- A cinematic GSAP entrance.
+- A blurred backdrop.
+- A refined panel transition.
+- Clear visual hierarchy.
+- A dedicated close control.
+- Responsive internal spacing.
+- A loading state for embedded forms.
+- Mobile safe-area support.
+- Correct focus management.
+- Escape-key support.
+- Click-outside closing.
+- Focus restoration.
+- Background inertness.
+- Suspended smooth scrolling while open.
+
+If a third-party form is embedded through an iframe, lazy-load it only on first interaction.
+
+Because cross-origin iframe content cannot be styled from the parent document, create appropriate padding and visual framing around the iframe rather than attempting inaccessible internal styling.
+
+## Navigation and stacking
+
+Define a deliberate global stacking system.
+
+The required order should be explicit:
+
+- Base content
+- Persistent 3D canvas
+- Interactive 3D trigger
+- Header
+- Full-screen navigation
+- Modal
+- Loader and critical system overlays
+
+The full-screen menu must always appear above the 3D object and trigger, including during its closing animation.
+
+Do not remove the elevated menu state until the reverse transition has fully completed.
+
+## Responsive behavior
+
+Create dedicated desktop and mobile compositions rather than simply shrinking the desktop design.
+
+On mobile:
+
+- Simplify expensive or overly dense motion.
+- Adjust 3D keyframes independently.
+- Respect safe-area insets.
+- Prevent fixed UI from blocking essential content.
+- Convert horizontal pinned experiences into touch-scroll galleries where appropriate.
+- Use responsive modal dimensions.
+- Maintain readable typography.
+- Prevent horizontal document overflow.
+- Cap WebGL pixel ratio.
+- Keep interactions touch-friendly.
+
+Test at multiple desktop heights and widths, not only one large display.
+
+At minimum, verify:
+
+- Large desktop.
+- Low-height desktop.
+- Tablet-width viewport.
+- Narrow mobile viewport.
+- Tall mobile viewport.
+
+## Accessibility
+
+The experience must remain accessible despite its visual complexity.
+
+Include:
+
+- Semantic landmarks.
+- Logical heading hierarchy.
+- Descriptive alternative text.
+- Keyboard-accessible navigation.
+- Visible focus behavior.
+- Correct ARIA states.
+- Focus trapping for dialogs.
+- Escape-key support.
+- Focus restoration.
+- Accessible names for icon-only controls.
+- Reduced-motion behavior.
+- Sufficient contrast.
+- Non-hover alternatives for essential interactions.
+
+When `prefers-reduced-motion` is active, remove or simplify nonessential animation without breaking content visibility or navigation.
+
+## Performance
+
+Maintain high visual quality without sacrificing responsiveness.
+
+Use:
+
+- Lazy-loaded media.
+- Deferred third-party embeds.
+- Controlled WebGL pixel ratio.
+- Efficient Three.js geometry handling.
+- Visibility-aware render loops.
+- RequestAnimationFrame.
+- Minimal layout reads inside animation frames.
+- Cached measurements.
+- ScrollTrigger refresh hooks.
+- Passive event listeners.
+- Efficient pointer interactions.
+- GPU-friendly transforms.
+- Responsive asset sizes.
+
+Pause or reduce rendering when the document is hidden.
+
+Avoid unnecessary textures, excessive post-processing, and continuous high-cost effects.
+
+## Implementation workflow
+
+1. Inspect the existing project structure and preserve its conventions.
+2. Review supplied assets, references, and 3D models.
+3. Establish the visual system and motion language.
+4. Build semantic page structure.
+5. Implement responsive layout.
+6. Add typography animation.
+7. Add scroll choreography.
+8. Integrate the 3D object.
+9. Add docking and conversion behavior.
+10. Implement navigation and modal interactions.
+11. Test all critical scroll states.
+12. Verify reverse scrolling.
+13. Test desktop and mobile layouts.
+14. Check menu and modal stacking.
+15. Check keyboard navigation.
+16. Check reduced motion.
+17. Check console output.
+18. Check horizontal overflow.
+19. Run the production build.
+20. Perform a final visual QA pass and correct every visible alignment issue.
+
+## Quality requirements
+
+The final result must:
+
+- Feel custom-designed.
+- Produce memorable moments throughout the scroll.
+- Maintain a consistent art direction.
+- Use motion as part of the UX.
+- Keep the 3D object visually integrated with the page.
+- Avoid template-like layouts.
+- Avoid abrupt transitions.
+- Avoid cheap-looking materials.
+- Avoid arbitrary effects.
+- Avoid content obstruction.
+- Avoid fragile hardcoded alignment.
+- Work on desktop and mobile.
+- Pass the production build.
+- Have no browser console errors.
+- Have no unintended horizontal overflow.
+
+Do not stop after creating a basic prototype. Continue refining typography, composition, timing, easing, lighting, responsive behavior, and transitions until the page feels polished, intentional, and production-ready.
