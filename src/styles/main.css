@@ -189,6 +189,10 @@
     background: rgb(5 8 17 / 94%);
   }
 
+  .mc-header.is-menu-open {
+    z-index: 220;
+  }
+
   .mc-logo {
     position: relative;
     z-index: 2;
@@ -296,7 +300,7 @@
   .mc-menu {
     position: fixed;
     inset: 0;
-    z-index: 90;
+    z-index: 210;
     display: grid;
     grid-template-columns: minmax(8rem, 1fr) minmax(18rem, 2fr);
     align-items: center;

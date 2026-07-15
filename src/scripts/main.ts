@@ -78,11 +78,16 @@ function initHeader(root: HTMLElement, lenis: Lenis | null) {
     .to(menu, { clipPath: "inset(0 0 0% 0)", duration: 0.8, ease: "mc-out" })
     .fromTo(menuLinks, { y: 70, opacity: 0 }, { y: 0, opacity: 1, duration: 0.7, stagger: 0.055, ease: "mc-out" }, "-=0.45");
 
+  menuTimeline.eventCallback("onReverseComplete", () => {
+    header.classList.remove("is-menu-open");
+  });
+
   const setMenu = (open: boolean) => {
     isOpen = open;
     toggle.setAttribute("aria-expanded", String(open));
     toggle.querySelector(".sr-only")!.textContent = open ? "Close menu" : "Open menu";
     if (open) {
+      header.classList.add("is-menu-open");
       header.style.transform = "translateY(0)";
       lenis?.stop();
       menuTimeline.play();
